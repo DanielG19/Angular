@@ -1,0 +1,31 @@
+<p *ngIf="logged == false;else loggedOn">El usuario inicio sesion correctamente...</p>
+
+<ng-template #loggedOn>
+  <p>{{Userstring | uppercase}} Not Found</p>
+</ng-template>
+<p>{{"hello angular 10" | slice:0:1 | uppercase}}{{"hello angular 10" | slice:1 | lowercase}}</p>
+<p> Fecha de hoy: {{ today | date:'fullDate'}}</p>
+
+Number 1: <input type="text" id="txtNumber1" [(ngModel)]="number1" (change)="ChangeOperation()">
+ Number 2: <input type="text" id="txtNumber2" [(ngModel)]="number2" (change)="ChangeOperation()">
+  <button (click)="ChangeOperation()">Dar Resultado</button>
+
+<div *ngFor="let operation of Operations; index as IndexNum">
+  <input type="radio" id="{{operation}}" name="Operation" [(ngModel)]="operationCheck" value="{{IndexNum}}">
+  <label for="{{operation}}">{{operation}}</label><br>
+</div>
+
+<!-- <div>
+<input type="radio" id="suma" name="Operation" [(ngModel)]="operationCheck" value="0" checked>
+<label for="suma">Suma</label><br>
+<input type="radio" id="resta" name="Operation" [(ngModel)]="operationCheck" value="1">
+<label for="resta">Resta</label><br>
+<input type="radio" id="multiplicacion" name="Operation" [(ngModel)]="operationCheck" value="2">
+<label for="multiplicacion">Multiplicacion</label><br>
+<input type="radio" id="division" name="Operation" [(ngModel)]="operationCheck" value="3">
+<label for="division">Division</label>
+</div>
+-->
+Result: <input type="text" disabled value={{Result}}>
+
+<app-matematico-result (limpiaCajas)="limpiaCajasEjecutado()" [ResultShow]="test"></app-matematico-result>
